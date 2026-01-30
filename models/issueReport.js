@@ -8,7 +8,7 @@ const IssueSchema = new mongoose.Schema({
     imageUrl : { type : String},
     status: {type: String,enum: ['pending', 'in-progress', 'resolved', 'rejected'],default: 'pending',},
     createdBy: { type : mongoose.Schema.Types.ObjectId, ref: 'User'},
-})
+}, { timestamps: true })
 
 const IssueModel = mongoose.model("issues", IssueSchema)
 module.exports = IssueModel
