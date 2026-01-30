@@ -13,7 +13,7 @@ exports.sendMessage = async (req, res) => {
         res.status(200).json(newMessage);
     } catch (err) {
         console.error("Error sending message:", err);
-        res.status(401).json({ error: "Failed to send message" });
+        res.status(400).json({ error: err.message || "Failed to send message" });
     }
 };
 
