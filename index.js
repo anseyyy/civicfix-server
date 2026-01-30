@@ -7,6 +7,15 @@ require("dotenv").config();
 require("./dbConnection/dbConnection");
 const router = require("./routes/router");
 
+const fs = require("fs");
+
+// Ensure uploads directory exists
+const uploadDir = "uploads";
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+  console.log(`Created directory: ${uploadDir}`);
+}
+
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
